@@ -10,7 +10,6 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.oep.pruebaoep1.networking.callbacks.OEPCallbacks;
 import com.oep.pruebaoep1.networking.clients.OEPService;

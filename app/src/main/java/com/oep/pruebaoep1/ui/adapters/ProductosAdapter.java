@@ -59,9 +59,10 @@ public class ProductosAdapter extends ArrayAdapter<Producto> {
         Glide
                 .with(getContext())
 //                .load(Uri.parse("file:///android_asset/"+p.getImagen()))
-                .load(Uri.parse(p.getImagen()))
+                .load(p.getImagen())
                 .asBitmap()
                 .centerCrop()
+                .placeholder(R.drawable.icono)
                 .into(new BitmapImageViewTarget(imgProd){
                     @Override
                     protected void setResource(Bitmap resource) {

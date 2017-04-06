@@ -43,8 +43,6 @@ public class DetalleProductoActivity extends AppCompatActivity {
 
 
 
-        Bundle mochila = getIntent().getExtras();
-        Toast.makeText(this, "Elegiste: "+ mochila.getInt("PRECIO_KEY"), Toast.LENGTH_SHORT).show();
 
         //Referenciamos objetos
         ImageView imgProd = (ImageView) findViewById(R.id.iv_imagen_detalle);
@@ -52,6 +50,7 @@ public class DetalleProductoActivity extends AppCompatActivity {
 
 
         //Seteamos los valores
+        Bundle mochila = getIntent().getExtras();
         String nombre= mochila.getString("NOMBRE_KEY");
         String imagen= mochila.getString("IMAGEN_KEY");
         int precio= mochila.getInt("PRECIO_KEY");
