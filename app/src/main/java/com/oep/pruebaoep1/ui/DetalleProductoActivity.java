@@ -26,7 +26,6 @@ import com.oep.pruebaoep1.utils.ConnectionUtils;
 
 import org.w3c.dom.Text;
 
-import fr.castorflex.android.smoothprogressbar.SmoothProgressBar;
 
 public class DetalleProductoActivity extends AppCompatActivity {
 
