@@ -1,8 +1,10 @@
 package com.oep.pruebaoep1.ui;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -47,6 +49,11 @@ public class SupermercadoActivity extends AppCompatActivity implements AdapterVi
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_supermercado);
 
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar.setTitle("Supermercado");
+        toolbar.setTitleTextColor(Color.WHITE);
+        setSupportActionBar(toolbar);
+
         //Referenciamos a los objetos
         tvNombre = (TextView) findViewById(R.id.tv_nombre);
         tvCiudad = (TextView) findViewById(R.id.tv_ciudad);
@@ -59,7 +66,7 @@ public class SupermercadoActivity extends AppCompatActivity implements AdapterVi
 
         //Seteamos los datos en los TextViews
         tvNombre.setText("BIENVENIDO "+txt_nombre);
-        tvCiudad.setText(txt_ciudad);
+        tvCiudad.setText(txt_ciudad+", Bolivia");
 
         //TODO Configuramos la Lista mas de Objetos (MANUAL)
 //        productos2.add(0,new Producto("botacho.jpg","Ron Abuelo",12));
@@ -103,16 +110,20 @@ public class SupermercadoActivity extends AppCompatActivity implements AdapterVi
             JSONObject jsonObj = new JSONObject(result);
             JSONArray productos = jsonObj.getJSONArray("results");
             for (int i = 0 ;i< productos.length();i++){
+                //Obtenemos el Producto
                 JSONObject p = productos.getJSONObject(i);
-                Log.e("Producto",p.getString("name"));
                 String nombre = p.getString("name");
                 String imagen= p.getString("image");
                 int precio = p.getInt("price");
+
+                //Añadimos el producto
                 productos2.add(i,new Producto(imagen,nombre,precio));
-                mAdaptador = new ProductosAdapter(this,R.layout.item_lista,productos2);
-                listaProd.setAdapter(mAdaptador);
-                listaProd.setOnItemClickListener(this);
             }
+
+            // Seteamos en nuestra Lista
+            mAdaptador = new ProductosAdapter(this,R.layout.item_lista,productos2);
+            listaProd.setAdapter(mAdaptador);
+            listaProd.setOnItemClickListener(this);
         }catch (Exception ex){
         }
 
